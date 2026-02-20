@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 export default function LoadingScreen({ onComplete, duration = 2000 }) {
-  const [isVisible, setIsVisible] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -18,7 +17,7 @@ export default function LoadingScreen({ onComplete, duration = 2000 }) {
         return;
       }
 
-      setIsVisible(false);
+      setProgress(100);
       onComplete?.();
     };
 
@@ -26,8 +25,6 @@ export default function LoadingScreen({ onComplete, duration = 2000 }) {
 
     return () => cancelAnimationFrame(animationFrameId);
   }, [duration, onComplete]);
-
-  if (!isVisible) return null;
 
   return (
     <div className="fixed inset-0 z-[9999] bg-background flex items-center justify-center">

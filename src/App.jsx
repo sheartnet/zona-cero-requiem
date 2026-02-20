@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
@@ -51,12 +51,35 @@ const RoutedApp = () => {
 
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isTimerDone, setIsTimerDone] = useState(false);
+  const [areHeroAssetsReady, setAreHeroAssetsReady] = useState(false);
+
+  useEffect(() => {
+    const preloadImage = (src) => new Promise((resolve) => {
+      const image = new Image();
+      image.onload = () => resolve(true);
+      image.onerror = () => resolve(false);
+      image.src = src;
+    });
+
+    Promise.all([
+      preloadImage('/images/hero_bg.png'),
+      preloadImage('/images/logo-hero.png'),
+    ]).finally(() => {
+      setAreHeroAssetsReady(true);
+    });
+  }, []);
+
+  const handleLoadingComplete = useCallback(() => {
+    setIsTimerDone(true);
+  }, []);
+
+  const isLoading = !isTimerDone || !areHeroAssetsReady;
 
   return (
     <QueryClientProvider client={queryClientInstance}>
       {isLoading ? (
-        <LoadingScreen onComplete={() => setIsLoading(false)} />
+        <LoadingScreen onComplete={handleLoadingComplete} />
       ) : (
         <>
           <Router>

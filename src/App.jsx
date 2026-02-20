@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import { pagesConfig } from './pages.config'
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
+import LoadingScreen from '@/components/LoadingScreen';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -50,14 +51,21 @@ const RoutedApp = () => {
 
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <QueryClientProvider client={queryClientInstance}>
-      <Router>
-        <ScrollToTop />
-        <RoutedApp />
-      </Router>
-      <Toaster />
+      {isLoading ? (
+        <LoadingScreen onComplete={() => setIsLoading(false)} />
+      ) : (
+        <>
+          <Router>
+            <ScrollToTop />
+            <RoutedApp />
+          </Router>
+          <Toaster />
+        </>
+      )}
     </QueryClientProvider>
   )
 }

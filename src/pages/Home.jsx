@@ -105,6 +105,7 @@ export default function Home() {
     { name: "Corredores", desc: "Rápidos y agresivos", threat: 2 },
     { name: "Acechadores", desc: "Silenciosos y letales", threat: 3 },
     { name: "Abominaciones", desc: "Raros pero devastadores", threat: 4 },
+    { name: "Revenants", desc: "Persistentes y casi imposibles de detener", threat: 4, brokenThreat: true },
   ];
 
   const steps = [
@@ -249,12 +250,28 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex gap-1">
-                    {[...Array(4)].map((_, j) => (
-                      <div
-                        key={j}
-                        className={`w-2 h-8 ${j < type.threat ? 'bg-red-800' : 'bg-zinc-800'}`}
-                      />
-                    ))}
+                    {[...Array(4)].map((_, j) => {
+                      const isActive = j < type.threat;
+
+                      if (type.brokenThreat) {
+                        return (
+                          <div
+                            key={j}
+                            className={`w-2 h-8 relative overflow-hidden ${isActive ? 'bg-red-800' : 'bg-zinc-800'}`}
+                          >
+                            <div className="absolute left-[-30%] top-[45%] w-[160%] h-[3px] bg-[#080808] rotate-[-18deg]" />
+                            <div className="absolute left-[-25%] top-[56%] w-[150%] h-[2px] bg-[#080808] rotate-[14deg]" />
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <div
+                          key={j}
+                          className={`w-2 h-8 ${isActive ? 'bg-red-800' : 'bg-zinc-800'}`}
+                        />
+                      );
+                    })}
                   </div>
                 </motion.div>
               </AnimatedSection>

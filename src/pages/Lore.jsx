@@ -126,7 +126,7 @@ export default function Lore() {
               están disponibles en nuestro Discord.
             </p>
             <a
-              href="https://discord.gg/zonacero"
+              href="https://discord.gg/jXBDPKB6Ku"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border border-red-500/60 text-red-400 hover:bg-red-500/10 transition-colors text-sm tracking-wide"

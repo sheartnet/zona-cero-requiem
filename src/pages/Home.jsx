@@ -161,7 +161,7 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <a
-              href="https://discord.gg/zonacero"
+              href="https://discord.gg/jXBDPKB6Ku"
               target="_blank"
               rel="noopener noreferrer"
               className="group px-8 py-4 bg-red-900/80 hover:bg-red-800 text-white rounded-none border border-red-800 transition-all duration-300 flex items-center gap-3"

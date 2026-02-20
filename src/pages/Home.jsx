@@ -124,11 +124,11 @@ export default function Home() {
             ref={heroImageRef}
             src="/images/hero_bg.png"
             alt="Hero background"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center brightness-110"
           />
         </div>
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/35 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/22 to-[#0a0a0a]" />
 
         <motion.div
           initial={{ opacity: 0 }}

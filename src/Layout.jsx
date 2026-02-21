@@ -158,7 +158,7 @@ export default function Layout({ children }) {
               className="p-8 border-t border-zinc-900"
             >
               <a
-                href="https://discord.gg/zonacero"
+                href="https://discord.gg/jXBDPKB6Ku"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between px-4 py-3 bg-red-900/20 border border-red-900/30 text-red-700 hover:bg-red-900/30 transition-colors group"

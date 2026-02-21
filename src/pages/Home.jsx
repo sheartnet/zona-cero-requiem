@@ -105,6 +105,7 @@ export default function Home() {
     { name: "Corredores", desc: "Rápidos y agresivos", threat: 2 },
     { name: "Acechadores", desc: "Silenciosos y letales", threat: 3 },
     { name: "Abominaciones", desc: "Raros pero devastadores", threat: 4 },
+    { name: "Revenants", desc: "Persistentes y casi imposibles de detener", threat: 4, brokenThreat: true },
   ];
 
   const steps = [
@@ -123,11 +124,11 @@ export default function Home() {
             ref={heroImageRef}
             src="/images/hero_bg.png"
             alt="Hero background"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center brightness-110"
           />
         </div>
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/35 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/22 to-[#0a0a0a]" />
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -160,7 +161,7 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <a
-              href="https://discord.gg/zonacero"
+              href="https://discord.gg/jXBDPKB6Ku"
               target="_blank"
               rel="noopener noreferrer"
               className="group px-8 py-4 bg-red-900/80 hover:bg-red-800 text-white rounded-none border border-red-800 transition-all duration-300 flex items-center gap-3"
@@ -195,7 +196,7 @@ export default function Home() {
               <div className="w-12 h-px bg-red-800" />
               <span className="text-red-800/80 tracking-[0.2em] text-xs uppercase">Características</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16" style={{ fontFamily: "'Bitter', serif" }}>
               <AnimatedText text="¿Qué lo hace " delay={0.1} />
               <AnimatedText text="diferente?" className="text-zinc-500" delay={0.2} />
             </h2>
@@ -226,7 +227,7 @@ export default function Home() {
               <div className="w-12 h-px bg-red-800" />
               <span className="text-red-800/80 tracking-[0.2em] text-xs uppercase">Amenazas</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16" style={{ fontFamily: "'Bitter', serif" }}>
               <AnimatedText text="Tipos de " delay={0.1} />
               <AnimatedText text="Infectados" className="text-red-800" delay={0.2} />
             </h2>
@@ -248,13 +249,32 @@ export default function Home() {
                       <p className="text-zinc-500 text-sm">{type.desc}</p>
                     </div>
                   </div>
-                  <div className="flex gap-1">
-                    {[...Array(4)].map((_, j) => (
-                      <div
-                        key={j}
-                        className={`w-2 h-8 ${j < type.threat ? 'bg-red-800' : 'bg-zinc-800'}`}
-                      />
-                    ))}
+                  <div className="flex items-center gap-3">
+                    <span className="text-zinc-500 text-xs tracking-wide hidden sm:block">Nivel de peligrosidad:</span>
+                    <div className="flex gap-1">
+                    {[...Array(4)].map((_, j) => {
+                      const isActive = j < type.threat;
+
+                      if (type.brokenThreat) {
+                        return (
+                          <div
+                            key={j}
+                            className={`w-2 h-8 relative overflow-hidden ${isActive ? 'bg-red-800' : 'bg-zinc-800'}`}
+                          >
+                            <div className="absolute left-[-30%] top-[45%] w-[160%] h-[3px] bg-[#080808] rotate-[-18deg]" />
+                            <div className="absolute left-[-25%] top-[56%] w-[150%] h-[2px] bg-[#080808] rotate-[14deg]" />
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <div
+                          key={j}
+                          className={`w-2 h-8 ${isActive ? 'bg-red-800' : 'bg-zinc-800'}`}
+                        />
+                      );
+                    })}
+                    </div>
                   </div>
                 </motion.div>
               </AnimatedSection>
@@ -271,7 +291,7 @@ export default function Home() {
               <div className="w-12 h-px bg-red-800" />
               <span className="text-red-800/80 tracking-[0.2em] text-xs uppercase">Comenzar</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16" style={{ fontFamily: "'Bitter', serif" }}>
               <AnimatedText text="Cómo " delay={0.1} />
               <AnimatedText text="unirse" className="text-zinc-500" delay={0.2} />
             </h2>

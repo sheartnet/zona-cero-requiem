@@ -70,7 +70,7 @@ export default function Lore() {
             <div className="w-12 h-px bg-red-500" />
             <span className="text-red-400 tracking-[0.2em] text-xs uppercase">Historia</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: "'Bitter', serif" }}>
             El <span className="text-red-500">Lore</span>
           </h1>
           <p className="text-zinc-400 text-lg font-light max-w-2xl mb-16">
@@ -126,12 +126,12 @@ export default function Lore() {
               están disponibles en nuestro Discord.
             </p>
             <a
-              href="https://discord.gg/zonacero"
+              href="https://discord.gg/jXBDPKB6Ku"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border border-red-500/60 text-red-400 hover:bg-red-500/10 transition-colors text-sm tracking-wide"
             >
-              ACCEDER AL ARCHIVO
+              ACCEDER AL DISCORD
             </a>
           </div>
         </AnimatedSection>

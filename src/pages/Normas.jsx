@@ -148,7 +148,7 @@ export default function Normas() {
             
             <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-zinc-800">
               <a
-                href="https://discord.gg/zonacero"
+                href="https://discord.gg/jXBDPKB6Ku"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 text-center px-6 py-3 bg-red-900/80 hover:bg-red-800 border border-red-800 text-white transition-colors text-sm tracking-wide"
